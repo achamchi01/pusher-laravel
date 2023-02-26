@@ -14,5 +14,9 @@ use Illuminate\Support\Facades\Broadcast;
 */
 
 Broadcast::channel('App.Models.User.{id}', function ($user, $id) {
-    return (int) $user->id === (int) $id;
+    return [
+        'id' => $user->id,
+        'name' => $user->name,
+        'timestamp' => time() // Add this line to use current timestamp
+    ];
 });
